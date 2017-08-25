@@ -32,7 +32,7 @@ private:
     static const int B_HEIGHT = 600;
     static const int DOT_SIZE = 25;
     static const int ALL_DOTS = 14400;
-    static const int DELAY = 500;
+    static int DELAY;
     static const int RAND_POS = 24;
     enum e_direction{ left, right, down, up};
     e_direction direction;
@@ -54,6 +54,7 @@ private:
     void pause();
     void unpause();
     void newGame();
+    void speedUp();
 
     void paintEvent(QPaintEvent *e);
     void timerEvent(QTimerEvent *e);

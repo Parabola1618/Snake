@@ -16,6 +16,7 @@ public:
     ~gameOverWindow();
 
     bool newGameFlag, exitFlag;
+    void setLabelVisible(bool state);
 
 private:
     Ui::gameOverWindow *ui;

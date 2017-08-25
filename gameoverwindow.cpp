@@ -9,6 +9,8 @@ gameOverWindow::gameOverWindow(QWidget *parent) :
 
     setStyleSheet("background-color : black");
     ui->label->setStyleSheet("background-color : black");
+    ui->label->setVisible(false);
+
     ui->exitButton->setStyleSheet("background-color : green");
     ui->newGameButton->setStyleSheet("background-color : green");
 
@@ -32,4 +34,9 @@ void gameOverWindow::newGame()
 {
     newGameFlag = true;
     close();
+}
+
+void gameOverWindow::setLabelVisible(bool state)
+{
+    ui->label->setVisible(state);
 }
