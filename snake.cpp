@@ -2,6 +2,9 @@
 #include "ui_snake.h"
 #include <QPainter>
 
+int snake::DELAY = 600;
+
+
 snake::snake(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::snake)
@@ -61,16 +64,9 @@ void snake::initGame()
 
 void snake::locateFood()
 {
-    bool check = true;
-    do
-    {
-        coordinatesFood.first = (qrand() % RAND_POS) * DOT_SIZE;
-        coordinatesFood.second = (qrand() % RAND_POS) * DOT_SIZE;
-        for(int i = 0; i < dots; ++i)
-            if(coordinatesFood.first == coordinatesDots[i].first && coordinatesFood.second == coordinatesDots[i].second)
-                check = false;
-    }while(!check);
 
+    coordinatesFood.first = (qrand() % RAND_POS) * DOT_SIZE;
+    coordinatesFood.second = (qrand() % RAND_POS) * DOT_SIZE;
 }
 
 void snake::paintEvent(QPaintEvent *e)
@@ -93,6 +89,7 @@ void snake::checkFood()
     {
         ++dots;
         locateFood();
+        speedUp();
     }
 }
 
@@ -164,6 +161,8 @@ void snake::gameOver()
 {
     inGame = false;
     killTimer(timerId);
+
+    gameOverWin.setLabelVisible(true);
     gameOverWin.exec();
     if(gameOverWin.exitFlag)
     {
@@ -237,4 +236,12 @@ void snake::unpause()
 void snake::newGame()
 {
     initGame();
+}
+
+void snake::speedUp()
+{
+    if(DELAY <= 400) return;
+    else DELAY -= 30;
+    killTimer(timerId);
+    timerId = startTimer(DELAY);
 }
