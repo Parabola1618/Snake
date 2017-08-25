@@ -158,15 +158,7 @@ void snake::timerEvent(QTimerEvent *e)
 
 void snake::checkCollision()
 {
-    /*if(coordinatesDots[0].first >= B_WIDTH || coordinatesDots[0].first <= 0)
-    {
-        gameOver();
-    }
 
-    if(coordinatesDots[0].second >= B_HEIGHT || coordinatesDots[0].second <= 0)
-    {
-        gameOver();
-    }*/
 
     for(int i = dots; i > 0; --i)
     {
