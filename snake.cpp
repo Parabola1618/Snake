@@ -120,6 +120,26 @@ void snake::move()
     {
         coordinatesDots[0].second -= DOT_SIZE;
     }
+
+    if(coordinatesDots[0].first < 0)
+    {
+        coordinatesDots[0].first = B_WIDTH - DOT_SIZE;
+    }
+
+    if(coordinatesDots[0].first > B_WIDTH)
+    {
+        coordinatesDots[0].first = DOT_SIZE;
+    }
+
+    if(coordinatesDots[0].second > B_HEIGHT)
+    {
+        coordinatesDots[0].second = DOT_SIZE;
+    }
+
+    if(coordinatesDots[0].second < 0)
+    {
+        coordinatesDots[0].second = B_HEIGHT - DOT_SIZE;
+    }
 }
 
 void snake::timerEvent(QTimerEvent *e)
@@ -138,7 +158,7 @@ void snake::timerEvent(QTimerEvent *e)
 
 void snake::checkCollision()
 {
-    if(coordinatesDots[0].first >= B_WIDTH || coordinatesDots[0].first <= 0)
+    /*if(coordinatesDots[0].first >= B_WIDTH || coordinatesDots[0].first <= 0)
     {
         gameOver();
     }
@@ -146,7 +166,7 @@ void snake::checkCollision()
     if(coordinatesDots[0].second >= B_HEIGHT || coordinatesDots[0].second <= 0)
     {
         gameOver();
-    }
+    }*/
 
     for(int i = dots; i > 0; --i)
     {
